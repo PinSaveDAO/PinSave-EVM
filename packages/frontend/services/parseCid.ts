@@ -1,5 +1,15 @@
-export function parseCidIpfsio(link: string): string {
-  return link?.replace("ipfs://", "https://ipfs.io/ipfs/");
+export function parseCidIpfsio(cid: string): string {
+  /* if (link.charAt(0) === "i") {
+    return link?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  } */
+  return "https://ipfs.io/ipfs/" + cid;
+}
+
+export function parseCidInbrowser(cid: string): string {
+  /* if (link.charAt(0) === "i") {
+    return link?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  } */
+  return cid + ".ipfs.inbrowser.link";
 }
 
 export function parseCid(link: string): string {

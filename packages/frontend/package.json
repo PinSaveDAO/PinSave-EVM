@@ -19,7 +19,7 @@
     "@mantine/notifications": "^4.2.12",
     "@rainbow-me/rainbowkit": "2",
     "@synthetixio/synpress": "^4.0.3",
-    "@tanstack/react-query": "5.62.8",
+    "@tanstack/react-query": "5.45.1",
     "ethers": "^6.8.0",
     "filereader-stream": "^2.0.0",
     "isomorphic-fetch": "^3.0.0",

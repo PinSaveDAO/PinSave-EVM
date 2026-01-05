@@ -54,16 +54,20 @@ export default Home;
 
 export const getStaticProps = async () => {
   const { address, abi } = getContractInfo();
-  const provider = new JsonRpcProvider("https://rpc.ankr.com/optimism");
+  const provider = new JsonRpcProvider("https://go.getblock.io/b72b07e1892a41b4882e8c3f451a0e64");
   const contract: Contract = new Contract(address, abi, provider);
 
   const posts: PostReduced[] = [];
 
   const totalSupply = await contract.totalSupply();
 
+  console.log("total supply:", totalSupply)
+
   for (let i = 1; i <= totalSupply; i++) {
     const result = await contract.getPostCid(i);
+    console.log("cid:",result)
     const post = await fetchDecodedPost(result, 150);
+    console.log("decoded post:", post)
     posts.push({ image: post.image, name: post.name, tokenId: i });
   }
   return {
