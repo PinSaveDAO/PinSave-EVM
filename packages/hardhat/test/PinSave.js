@@ -150,4 +150,15 @@ describe("PinSave", function () {
     expect(await nftContract.totalSupply()).to.equal(10);
     expect(await nftContract.balanceOf(bob.address)).to.equal(10);
   });
+
+  it("blocks post", async function () {
+    await nftContract.connect(bob).createPost(bob.address, sampleLink);
+    await nftContract.connect(bob).tokenURI(1);
+    expect(await nftContract.isBlockedPost(1)).to.equal(false);
+
+    await nftContract.blockPost(1)
+    expect(await nftContract.isBlockedPost(1)).to.equal(true);
+
+    expect(nftContract.connect(jane).getPostData(1)).to.be.revertedWith("Not Allowed");
+  });
 });
