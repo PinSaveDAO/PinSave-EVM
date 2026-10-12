@@ -1,7 +1,7 @@
 import { PinataSDK } from "pinata-web3";
 import { PinataSDK as PinataSDK_ } from "pinata";
 
-import { parseCidDweb, parseCidNFTStorage } from "@/services/parseCid";
+import { parseCidOrbitor, parseCidFilebase, parseCidDget } from "@/services/parseCid";
 
 export type ObjectJsonMetadata = {
   name: string;
@@ -17,10 +17,17 @@ export type PinataObject = {
 export async function fetchJson(resURL: string, resURL2: string) {
   let item;
   try {
-    item = await fetch(resURL).then((x) => x.json());
+    console.log("fetching", resURL)
+    // item = await fetch(resURL).then((x) => x.json());
+    const urlData = await fetch(resURL);
+    console.log(urlData.status);
+    item = await urlData.json()
+    //console.log(item)
   } catch (e) {
-    console.log("fetchJson error", e);
-    item = await fetch(resURL2).then((x) => x.json());
+    console.log("fetchJson error", resURL2);
+    const urlData = await fetch(resURL);
+    console.log(urlData.status);
+    item = await urlData.json()
   }
   return item;
 }
@@ -59,8 +66,9 @@ export async function fetchWorkingImageUrl(resURL1: string, resURL2: string) {
 } */
 
 export async function parseString(result: string) {
-    const resURL1: string = parseCidNFTStorage(result);
-    const resURL2: string = parseCidDweb(result);
+    //const resURL1: string = parseCidOrbitor(result);
+    const resURL1: string = parseCidDget(result);
+    const resURL2: string = parseCidFilebase(result);
     return [resURL1, resURL2];
 
 }
@@ -78,7 +86,6 @@ export async function parseString(result: string) {
 
 export async function fetchMetadata(cidMetadata: string) {
   const [resURL, resURL2] = await parseString(cidMetadata);
-  console.log(resURL)
   const objectJsonMetadata: ObjectJsonMetadata = await fetchJson(
     resURL,
     resURL2,

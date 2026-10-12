@@ -15,6 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
+    "types": ["node"],
     "paths": {
       "@/components/*": ["components/*"],
       "@/context/*": ["context/*"],

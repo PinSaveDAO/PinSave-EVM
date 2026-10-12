@@ -5,13 +5,6 @@ export function parseCidIpfsio(cid: string): string {
   return "https://ipfs.io/ipfs/" + cid;
 }
 
-export function parseCidInbrowser(cid: string): string {
-  /* if (link.charAt(0) === "i") {
-    return link?.replace("ipfs://", "https://ipfs.io/ipfs/");
-  } */
-  return cid + ".ipfs.inbrowser.link";
-}
-
 export function parseCid(link: string): string {
   return link?.replace("ipfs://", "");
 }
@@ -30,6 +23,16 @@ export function insertIpfsDomainProvider(
   return "https://" + firstPart + providerDomain + lastPart;
 }
 
+export function parseCidOrbitor(link: string): string {
+  const result = "https://eu.orbitor.dev/ipfs/" + link;
+  return result;
+}
+
+export function parseCidFilebase(link: string): string {
+  const result = "https://ipfs.filebase.io/ipfs/" + link;
+  return result;
+}
+
 export function parseCidDweb(link: string): string {
   const result = insertIpfsDomainProvider(link, ".ipfs.dweb.link/");
   return result;
@@ -37,6 +40,16 @@ export function parseCidDweb(link: string): string {
 
 export function parseCidNFTStorage(link: string): string {
   const result = insertIpfsDomainProvider(link, ".ipfs.nftstorage.link/");
+  return result;
+}
+
+export function parseCidInbrowser(link: string): string {
+  const result = insertIpfsDomainProvider(link, ".ipfs.inbrowser.link");
+  return result;
+}
+
+export function parseCidDget(link: string): string {
+  const result = insertIpfsDomainProvider(link, ".ipfs.dget.top");
   return result;
 }
 
