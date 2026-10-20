@@ -54,7 +54,7 @@ export default Home;
 export const getStaticProps = async () => {
   const { address, abi } = getContractInfo();
   
-  const provider = new JsonRpcProvider("https://go.getblock.io/" + process.env.NEXT_PUBLIC_PROVIDER);
+  const provider = new JsonRpcProvider("https://rpc.botchain.ai");
   const contract: Contract = new Contract(address, abi, provider);
 
   const posts: PostReduced[] = [];

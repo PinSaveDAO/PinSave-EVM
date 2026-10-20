@@ -40,6 +40,11 @@ module.exports = {
       accounts: [process.env.PRIVATE_KEY],
       chainId: 10,
     },
+    BOT:{
+      url: "https://rpc.botchain.ai",
+      accounts: [process.env.PRIVATE_KEY],
+      chainId: 677,
+    }
   },
   gasReporter: {
     enabled: true,

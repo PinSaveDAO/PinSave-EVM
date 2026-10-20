@@ -10,7 +10,7 @@ import { usePost } from "@/hooks/api";
 
 const PostPage = () => {
   const router: NextRouter = useRouter();
-  const currentChain: ChainName = "optimism";
+  const currentChain: ChainName = "bot";
   const postId: string = String(router.query.id);
 
   const { data: postQueried, isLoading } = usePost(currentChain, postId);

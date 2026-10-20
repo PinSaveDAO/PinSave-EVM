@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { Contract, InfuraProvider } from "ethers";
+import { Contract, JsonRpcProvider } from "ethers";
 
 import { fetchDecodedPost } from "@/services/fetchCid";
 import { getContractInfo } from "@/utils/contracts";
@@ -12,10 +12,8 @@ export default async function handler(
     const { id } = req.query;
     const { address, abi } = getContractInfo();
 
-    const provider: InfuraProvider = new InfuraProvider(
-      "optimism",
-      process.env.NEXT_PUBLIC_INFURA_OPTIMISM,
-    );
+    const provider = new JsonRpcProvider("https://rpc.botchain.ai");
+
 
     const contract: Contract = new Contract(address, abi, provider);
     const postData: string[] = await contract.getPostData(id);

@@ -10,7 +10,7 @@ import { RainbowKitProvider, getDefaultConfig } from "@rainbow-me/rainbowkit";
 import { useMemo } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiProvider } from "wagmi";
-import { Chain, optimism } from "wagmi/chains";
+import { type Chain } from "wagmi/chains";
 
 import LayoutApp from "@/components/Layout";
 
@@ -25,10 +25,19 @@ export interface MyWalletOptions {
   chains: Chain[];
 }
 
+export const BOT = {
+  id: 677,
+  name: "BOT",
+  nativeCurrency: { name: 'BOT', symbol: 'BOT', decimals: 18 },
+  rpcUrls: {
+    default: { http: ['https://rpc.botchain.ai'] },
+  }
+} as const satisfies Chain
+
 const config = getDefaultConfig({
   appName: "PinSaveOptimism",
   projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_ID,
-  chains: [optimism],
+  chains: [BOT],
   ssr: true,
 });
 

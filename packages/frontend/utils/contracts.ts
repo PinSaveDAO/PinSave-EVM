@@ -2,7 +2,7 @@ import PinSave from "@/contracts/PinSave.json";
 
 export function getContractInfo() {
   return {
-    address: "0xEb6ce11B852A08f17443B94756dEA07886280718" as `0x${string}`,
+    address: "0x19178ff3b06465FbA313EC5784274b1fe43630dc" as `0x${string}`,
     abi: PinSave.abi,
   };
 }
