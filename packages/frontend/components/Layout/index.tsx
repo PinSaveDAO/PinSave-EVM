@@ -1,6 +1,7 @@
 import { AppShell } from "@mantine/core";
 
 import { Navbar } from "./Navbar";
+import { Footer } from "./Footer";
 
 interface LayoutProps {
   children: JSX.Element;
@@ -25,6 +26,13 @@ const LayoutApp = ({ children }: LayoutProps) => {
             { label: "Upload", link: "/upload" },
           ]}
         />
+      }
+      footer={
+        <Footer
+         links={[
+            { label: "BOT Chain", link: "https://www.botchain.ai" },
+            { label: "BOT Chain Explorer", link: "https://scan.botchain.ai" },
+          ]}/>
       }
     >
       {children}

@@ -52,6 +52,18 @@ module.exports = {
     gasPrice: 21,
   },
   etherscan: {
-    apiKey: { optimisticEthereum: "XXJVCGBBP9MWQVTCU4NMJ5PT3Z9IH3IWP8" },
+    apiKey: {
+      'BOT': 'empty'
+    },
+    customChains: [
+      {
+        network: "BOT",
+        chainId: 677,
+        urls: {
+          apiURL: "https://scan.botchain.ai/api",
+          browserURL: "https://scan.botchain.ai"
+        }
+      }
+    ]
   },
 };
